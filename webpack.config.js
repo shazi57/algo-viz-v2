@@ -20,6 +20,16 @@ module.exports = {
           plugins: ['react-hot-loader/babel'],
         },
       },
+      {
+        test: /.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: {
+          loader: 'url-loader',
+        },
+      },
     ],
   },
   resolve: {
