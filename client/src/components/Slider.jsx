@@ -9,7 +9,7 @@ const Label = withStyles(typoH2)(Typography);
 const PrettoSlider = withStyles(prettoStyle)(Slider);
 
 const RangeSlider = (props) => (
-  <div id="Slider-Container">
+  <div className="buttonContainer">
     <Label align="center" variant="h2" gutterBottom="true"> Size </Label>
     <PrettoSlider />
   </div>
