@@ -16,10 +16,13 @@ class NavBar extends React.Component {
   }
 
   onButtonClick(e) {
+    const { onCreateClicked } = this.props;
     if (e.target.textContent === 'Algorithms') {
       this.setState({
         drawer: true,
       });
+    } else if (e.target.textContent === 'Create') {
+      onCreateClicked();
     }
   }
 
