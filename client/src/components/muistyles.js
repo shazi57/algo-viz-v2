@@ -31,7 +31,13 @@ const algoButton = {
   root: {
     fontSize: 40,
   },
-}
+};
+
+const drawerStyle = {
+  paper: {
+    backgroundColor: 'navy',
+  },
+};
 
 const typoH2 = {
   root: {
@@ -42,4 +48,6 @@ const typoH2 = {
   },
 };
 
-export { prettoStyle, typoH2, algoButton }
+export {
+  prettoStyle, typoH2, algoButton, drawerStyle,
+};
