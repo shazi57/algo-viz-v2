@@ -10,16 +10,31 @@ class NavBar extends React.Component {
     super(props);
     this.state = {
       drawer: false,
+      size: null,
     };
+    this.onSizeConfirmed = this.onSizeConfirmed.bind(this);
     this.onButtonClick = this.onButtonClick.bind(this);
     this.onDrawerClose = this.onDrawerClose.bind(this);
   }
 
+  onSizeConfirmed(e, value) {
+    this.setState({
+      size: value,
+    });
+  }
+
   onButtonClick(e) {
+    const { size } = this.state;
+    const { onCreateClicked, onClearClicked } = this.props;
+
     if (e.target.textContent === 'Algorithms') {
       this.setState({
         drawer: true,
       });
+    } else if (e.target.textContent === 'Create') {
+      onCreateClicked(size);
+    } else if (e.target.textContent === 'Clear') {
+      onClearClicked();
     }
   }
 
@@ -31,11 +46,10 @@ class NavBar extends React.Component {
 
   render() {
     const { drawer } = this.state;
-    const { onSizeConfirmed } = this.props;
     return (
       <div className="navBar">
         <img id="logo" alt="logoImage" src={logo} />
-        <Slider onSizeConfirmed={onSizeConfirmed} />
+        <Slider onSizeConfirmed={this.onSizeConfirmed} />
         <NavButton onButtonClick={this.onButtonClick} label="Create" />
         <NavButton onButtonClick={this.onButtonClick} label="Algorithms" />
         <AlgoDrawer isOpen={drawer} isClosed={this.onDrawerClose} />
