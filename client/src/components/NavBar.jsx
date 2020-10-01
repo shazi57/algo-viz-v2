@@ -31,10 +31,12 @@ class NavBar extends React.Component {
 
   render() {
     const { drawer } = this.state;
+    const { onSizeConfirmed } = this.props;
     return (
       <div className="navBar">
         <img id="logo" alt="logoImage" src={logo} />
-        <Slider />
+        <Slider onSizeConfirmed={onSizeConfirmed} />
+        <NavButton onButtonClick={this.onButtonClick} label="Create" />
         <NavButton onButtonClick={this.onButtonClick} label="Algorithms" />
         <AlgoDrawer isOpen={drawer} isClosed={this.onDrawerClose} />
         <NavButton onButtonClick={this.onButtonClick} label="Start" />
