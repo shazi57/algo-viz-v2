@@ -1,13 +1,21 @@
-import React from 'react';
-import { useEffect, createRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import './Canvas.css';
+import { createRandomArray, deleteAll, createCanvas } from './helperFunctions';
 
 const Canvas = (props) => {
-  return (
-    <div>
-      <svg>
-      </svg>
-    </div>
-  )
+  const { size, canvasCreated, canvasCleared } = props;
+  const ref = useRef();
+  const data = createRandomArray(size);
+
+  useEffect(() => {
+    if (canvasCreated) {
+      createCanvas(ref.current, data);
+    } else if (canvasCleared) {
+      deleteAll(ref.current);
+    }
+  });
+
+  return <svg id="canvas" ref={ref} />;
 };
 
 export default Canvas;

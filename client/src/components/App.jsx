@@ -10,43 +10,62 @@ class App extends React.Component {
     super(props);
     this.state = {
       size: null,
-      canvas: false,
+      canvasCreated: false,
+      canvasCleared: false,
       alertWindow: false,
+      alertMessage: null,
     };
-    this.onSizeConfirmed = this.onSizeConfirmed.bind(this);
     this.onCreateClicked = this.onCreateClicked.bind(this);
+    this.onClearClicked = this.onClearClicked.bind(this);
   }
 
-  onSizeConfirmed(e, value) {
-    this.setState({
-      size: value,
-    });
-  }
-
-  onCreateClicked() {
-    const { size } = this.state;
+  onCreateClicked(size) {
+    const { canvasCreated } = this.state;
     if (size === null || size === 0) {
       this.setState({
         alertWindow: true,
+        alertMessage: 'Move Slider for valid input',
+      });
+    } else if (canvasCreated) {
+      this.setState({
+        alertWindow: true,
+        alertMessage: 'Clear canvas before creating another canvas',
       });
     } else {
       this.setState({
-        canvas: true,
+        size,
+        canvasCreated: true,
+        canvasCleared: false,
         alertWindow: false,
       });
     }
   }
 
+  onClearClicked() {
+    this.setState({
+      alertWindow: false,
+      canvasCleared: true,
+      canvasCreated: false,
+    });
+  }
+
   render() {
-    const { size, canvas, alertWindow } = this.state;
+    const {
+      size,
+      canvasCreated,
+      alertWindow,
+      alertMessage,
+      canvasCleared,
+    } = this.state;
     return (
       <div className="container">
         <NavBar
           onCreateClicked={this.onCreateClicked}
           onSizeConfirmed={this.onSizeConfirmed}
+          onClearClicked={this.onClearClicked}
         />
-        {(alertWindow ? <Alert severity="error">Move the range slider to select size</Alert> : null)}
-        {(canvas ? <Canvas size={size} /> : null)}
+        {(alertWindow ? <Alert severity="error">{alertMessage}</Alert> : null)}
+        <Canvas size={size} canvasCreated={canvasCreated} canvasCleared={canvasCleared} />
       </div>
     );
   }
