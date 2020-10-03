@@ -23,6 +23,7 @@ class App extends React.Component {
     const { canvasCreated } = this.state;
     if (size === null || size === 0) {
       this.setState({
+        canvasCreated: false,
         alertWindow: true,
         alertMessage: 'Move Slider for valid input',
       });
