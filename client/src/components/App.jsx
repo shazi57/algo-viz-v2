@@ -71,6 +71,7 @@ class App extends React.Component {
       });
     } else {
       this.setState({
+        alertWindow: false,
         renderAnimation: true,
         chosenAlgo: algo,
       });
@@ -89,7 +90,7 @@ class App extends React.Component {
     } = this.state;
 
     const canRenderAnimation = canvasCreated && chosenAlgo !== null && renderAnimation;
-    
+
     return (
       <div className="container">
         <NavBar
