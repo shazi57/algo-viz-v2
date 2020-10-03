@@ -12,7 +12,7 @@ const RangeSlider = (props) => {
   return (
     <div className="buttonContainer">
       <Label align="center" variant="h2"> Size </Label>
-      <PrettoSlider valueLabelDisplay="auto" onChangeCommitted={onSizeConfirmed} />
+      <PrettoSlider max={200} valueLabelDisplay="auto" onChangeCommitted={onSizeConfirmed} />
     </div>
   );
 };

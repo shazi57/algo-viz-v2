@@ -19,6 +19,10 @@ const deleteAll = (ref) => {
 };
 
 const createCanvas = (ref, data) => {
+  const size = data.length;
+  const width = Number(d3.select('#canvas').style('width').slice(0, -2));
+  const rectWidth = (width - 300) / size;
+
   d3.select(ref)
     .selectAll('rect')
     .data(data)
@@ -31,10 +35,10 @@ const createCanvas = (ref, data) => {
     .transition()
     .duration(2000)
     .delay((d, i) => (i * 10))
-    .attr('x', (d, i) => 100 + i * 12)
-    .attr('y', (d, i) => 920 - 11 * d)
-    .attr('width', 10)
-    .attr('height', d => (d * 11))
+    .attr('x', (d, i) => 100 + i * (rectWidth + (rectWidth / 10)))
+    .attr('y', (d, i) => 920 - 12 * d)
+    .attr('width', rectWidth)
+    .attr('height', d => (d * 12))
     .style('fill', 'green');
 };
 
