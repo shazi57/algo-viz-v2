@@ -9,15 +9,16 @@ import './AlgoDrawer.css';
 const LeftDrawer = withStyles(drawerStyle)(Drawer);
 
 const AlgoDrawer = (props) => {
-  const algoList = ['Selection Sort', 'Bubble Sort', 'Quick Sort'];
-  const { isOpen, isClosed } = props;
+  const {
+    isOpen, isClosed, algoClicked, algoList,
+  } = props;
 
   return (
     <LeftDrawer open={isOpen} onClose={isClosed}>
       <List>
         {algoList.map((algo) => (
           <ListItem key={algo}>
-            <NavButton label={algo} />
+            <NavButton onButtonClick={algoClicked} label={algo} />
           </ListItem>
         ))}
       </List>
