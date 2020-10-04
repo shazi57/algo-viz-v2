@@ -3,7 +3,8 @@ import { hot } from 'react-hot-loader';
 import Alert from '@material-ui/lab/Alert';
 import NavBar from './NavBar';
 import Canvas from './Canvas';
-import './App.css';
+import TransitionRenderer from './TransitionRenderer';
+import '../styles/App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -101,6 +102,7 @@ class App extends React.Component {
         />
         {(alertWindow ? <Alert severity="error">{alertMessage}</Alert> : null)}
         <Canvas size={size} canvasCreated={canvasCreated} canvasCleared={canvasCleared} />
+        <TransitionRenderer algo={chosenAlgo} active={canRenderAnimation} />
       </div>
     );
   }

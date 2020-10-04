@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import './Canvas.css';
-import { createRandomArray, deleteAll, createCanvas } from './helperFunctions';
+import '../styles/Canvas.css';
+import { createRandomArray, deleteAll, createCanvas } from '../transitions/basics';
 
 const Canvas = (props) => {
   const { size, canvasCreated, canvasCleared } = props;

@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/algoviz-logo.png';
-import './NavBar.css';
+import '../styles/NavBar.css';
 import Slider from './Slider';
 import NavButton from './NavButton';
 import AlgoDrawer from './AlgoDrawer';

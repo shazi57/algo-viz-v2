@@ -3,8 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { List, ListItem, Drawer } from '@material-ui/core';
 
 import NavButton from './NavButton';
-import { drawerStyle } from './muistyles';
-import './AlgoDrawer.css';
+import { drawerStyle } from '../styles/muistyles';
+import '../styles/AlgoDrawer.css';
 
 const LeftDrawer = withStyles(drawerStyle)(Drawer);
 
