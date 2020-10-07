@@ -4,7 +4,7 @@ const ENTRY_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
-  entry: `${ENTRY_DIR}/index.jsx`,
+  entry: ['@babel/polyfill', `${ENTRY_DIR}/index.jsx`],
   output: {
     path: DIST_DIR,
     filename: 'bundle.js',
@@ -17,7 +17,13 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['react-hot-loader/babel'],
+          plugins: ['react-hot-loader/babel',
+            ['@babel/plugin-transform-runtime',
+              {
+                regenerator: true,
+              },
+            ],
+          ],
         },
       },
       {

@@ -1,21 +1,11 @@
-import switchTwoBars from './switchTwoBars';
+import switchAnimation from './swithAnimation';
 
 const renderAnimation = (config, algorithm) => {
-  const mappings = algorithm(config.data);
-  const switched = {};
+  const { canvas, data, barInterval } = config;
+  const mappings = algorithm(data);
   const starter = mappings.shift();
-  const [idX, idY] = starter;
-  switched[idX] = idY;
-  switched[idY] = idX;
-  console.log(starter);
-  switchTwoBars(config, starter)
-    .on('end', () => {
-      if (mappings.length === 0) {
-        return;
-      }
-      console.log(switched);
-      const nextMapping = mappings.shift();
-    });
+  const [from, to] = starter;
+  switchAnimation(canvas, mappings, barInterval, from, to);
 };
 
 export default renderAnimation;
