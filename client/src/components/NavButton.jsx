@@ -2,7 +2,7 @@ import React from 'react';
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
-import { algoButton } from './muistyles';
+import { algoButton } from '../styles/muistyles';
 
 const GreenButton = withStyles(algoButton)(Button);
 
