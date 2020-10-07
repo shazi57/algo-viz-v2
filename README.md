@@ -3,7 +3,8 @@ Algo-Viz is a **sorting algorithm visualization project** designed to help stude
 
 ![](https://media.giphy.com/media/GvzrX4KIeOki6aKM4W/giphy.gif)
 
-</br>Demo https://shazi57.github.io/algo-viz-v2/
+## Demo
+https://shazi57.github.io/algo-viz-v2/
 
 
 Currently supported sorting algorithms:  
