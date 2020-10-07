@@ -1,15 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/Canvas.css';
-import { createRandomArray, deleteAll, createCanvas } from '../transitions/basics';
+import { deleteAll, createCanvas } from '../transitions/basics';
 
 const Canvas = (props) => {
-  const { size, canvasCreated, canvasCleared } = props;
+  const { canvasCreated, canvasCleared, canvasConfig } = props;
   const ref = useRef();
-  const data = createRandomArray(size);
 
   useEffect(() => {
     if (canvasCreated) {
-      createCanvas(ref.current, data);
+      createCanvas(ref.current, canvasConfig);
     } else if (canvasCleared) {
       deleteAll(ref.current);
     }

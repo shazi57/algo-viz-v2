@@ -4,6 +4,7 @@ import Alert from '@material-ui/lab/Alert';
 import NavBar from './NavBar';
 import Canvas from './Canvas';
 import TransitionRenderer from './TransitionRenderer';
+import { getCanvasConfig } from '../helpers/utils';
 import '../styles/App.css';
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
       alertMessage: null,
       renderAnimation: false,
       chosenAlgo: null,
+      canvasConfig: null,
     };
     this.onCreateClicked = this.onCreateClicked.bind(this);
     this.onClearClicked = this.onClearClicked.bind(this);
@@ -25,6 +27,7 @@ class App extends React.Component {
 
   onCreateClicked(size) {
     const { canvasCreated } = this.state;
+    const canvasConfig = getCanvasConfig(size);
     if (size === null || size === 0) {
       this.setState({
         canvasCreated: false,
@@ -39,6 +42,7 @@ class App extends React.Component {
     } else {
       this.setState({
         size,
+        canvasConfig,
         canvasCreated: true,
         canvasCleared: false,
         alertWindow: false,
@@ -51,6 +55,8 @@ class App extends React.Component {
       alertWindow: false,
       canvasCleared: true,
       canvasCreated: false,
+      canvasConfig: null,
+      renderAnimation: false,
     });
   }
 
@@ -88,6 +94,7 @@ class App extends React.Component {
       canvasCleared,
       renderAnimation,
       chosenAlgo,
+      canvasConfig,
     } = this.state;
 
     const canRenderAnimation = canvasCreated && chosenAlgo !== null && renderAnimation;
@@ -101,8 +108,17 @@ class App extends React.Component {
           onSortClicked={this.onSortClicked}
         />
         {(alertWindow ? <Alert severity="error">{alertMessage}</Alert> : null)}
-        <Canvas size={size} canvasCreated={canvasCreated} canvasCleared={canvasCleared} />
-        <TransitionRenderer algo={chosenAlgo} active={canRenderAnimation} />
+        <Canvas
+          canvasConfig={canvasConfig}
+          size={size}
+          canvasCreated={canvasCreated}
+          canvasCleared={canvasCleared}
+        />
+        <TransitionRenderer
+          canvasConfig={canvasConfig}
+          algo={chosenAlgo}
+          active={canRenderAnimation}
+        />
       </div>
     );
   }
