@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import bubbleSort from '../algorithms/bubbleSort';
 import renderAnimation from '../transitions/main';
+import selectionSort from '../algorithms/selectionSort';
+import quickSort from '../algorithms/quickSort';
 
 const TransitionRenderer = (props) => {
   const { algo, active, canvasConfig } = props;
@@ -9,13 +11,13 @@ const TransitionRenderer = (props) => {
     if (active) {
       switch (algo) {
         case 'Selection Sort':
-          console.log('not implemented yet');
+          renderAnimation(canvasConfig, selectionSort);
           break;
         case 'Bubble Sort':
           renderAnimation(canvasConfig, bubbleSort);
           break;
         case 'Quick Sort':
-          console.log('not implemented yet');
+          renderAnimation(canvasConfig, quickSort);
           break;
         default:
           console.log('not implemented yet');
