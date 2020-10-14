@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import Canvas from './Canvas';
 import TransitionRenderer from './TransitionRenderer';
 import { getCanvasConfig } from '../helpers/utils';
+import Modal from './Modal';
 import '../styles/App.css';
 
 class App extends React.Component {
@@ -101,6 +102,7 @@ class App extends React.Component {
 
     return (
       <div className="container">
+        <Modal />
         <NavBar
           onCreateClicked={this.onCreateClicked}
           onSizeConfirmed={this.onSizeConfirmed}
