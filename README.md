@@ -34,3 +34,4 @@ To check the progress of the development, go to the **project tab** and select t
   * issues : 
     1. [Implementation] modal component explaining each sorting algorithm and guide on how to use the application.
     2. [Algorithms] Merge Sort algorithm 
+* 10/14/20 : modal component pops up on the page load.  
