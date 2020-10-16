@@ -20,10 +20,12 @@ class App extends React.Component {
       renderAnimation: false,
       chosenAlgo: null,
       canvasConfig: null,
+      rendering: false,
     };
     this.onCreateClicked = this.onCreateClicked.bind(this);
     this.onClearClicked = this.onClearClicked.bind(this);
     this.onSortClicked = this.onSortClicked.bind(this);
+    this.handleRenderFinish = this.handleRenderFinish.bind(this);
   }
 
   onCreateClicked(size) {
@@ -82,8 +84,16 @@ class App extends React.Component {
         alertWindow: false,
         renderAnimation: true,
         chosenAlgo: algo,
+        rendering: true,
       });
     }
+  }
+
+  handleRenderFinish() {
+    this.setState({
+      rendering: false
+    });
+    console.log(this.state.rendering);
   }
 
   render() {
@@ -96,10 +106,10 @@ class App extends React.Component {
       renderAnimation,
       chosenAlgo,
       canvasConfig,
+      rendering,
     } = this.state;
 
     const canRenderAnimation = canvasCreated && chosenAlgo !== null && renderAnimation;
-
     return (
       <div className="container">
         <Modal />
@@ -120,6 +130,7 @@ class App extends React.Component {
           canvasConfig={canvasConfig}
           algo={chosenAlgo}
           active={canRenderAnimation}
+          handleRenderFinish={this.handleRenderFinish}
         />
       </div>
     );

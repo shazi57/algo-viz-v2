@@ -1,4 +1,4 @@
-const switchAnimation = (canvas, mappings, animationSpeed, barInterval, from, to) => {
+const switchAnimation = (canvas, mappings, animationSpeed, barInterval, from, to, update) => {
   const fromNode = canvas.select(`#num_${from}`);
   const toNode = canvas.select(`#num_${to}`);
   return fromNode
@@ -22,7 +22,11 @@ const switchAnimation = (canvas, mappings, animationSpeed, barInterval, from, to
             .style('fill', 'green');
           if (mappings.length !== 0) {
             const [nextFrom, nextTo] = mappings.shift();
-            switchAnimation(canvas, mappings, animationSpeed, barInterval, nextFrom, nextTo);
+            switchAnimation(canvas, mappings, animationSpeed, barInterval, nextFrom, nextTo, update);
+          } else {
+            setTimeout(() => {
+              update();
+            }, 200);
           }
         });
     });
