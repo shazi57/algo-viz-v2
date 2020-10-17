@@ -91,9 +91,8 @@ class App extends React.Component {
 
   handleRenderFinish() {
     this.setState({
-      rendering: false
+      rendering: false,
     });
-    console.log(this.state.rendering);
   }
 
   render() {
@@ -109,7 +108,7 @@ class App extends React.Component {
       rendering,
     } = this.state;
 
-    const canRenderAnimation = canvasCreated && chosenAlgo !== null && renderAnimation;
+    const canRenderAnimation = canvasCreated && chosenAlgo !== null && renderAnimation && rendering;
     return (
       <div className="container">
         <Modal />
@@ -118,6 +117,7 @@ class App extends React.Component {
           onSizeConfirmed={this.onSizeConfirmed}
           onClearClicked={this.onClearClicked}
           onSortClicked={this.onSortClicked}
+          rendering={rendering}
         />
         {(alertWindow ? <Alert severity="error">{alertMessage}</Alert> : null)}
         <Canvas

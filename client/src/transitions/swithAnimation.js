@@ -24,9 +24,7 @@ const switchAnimation = (canvas, mappings, animationSpeed, barInterval, from, to
             const [nextFrom, nextTo] = mappings.shift();
             switchAnimation(canvas, mappings, animationSpeed, barInterval, nextFrom, nextTo, update);
           } else {
-            setTimeout(() => {
-              update();
-            }, 200);
+            update();
           }
         });
     });
