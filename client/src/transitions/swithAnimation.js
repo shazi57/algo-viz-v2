@@ -22,7 +22,15 @@ const switchAnimation = (canvas, mappings, animationSpeed, barInterval, from, to
             .style('fill', 'green');
           if (mappings.length !== 0) {
             const [nextFrom, nextTo] = mappings.shift();
-            switchAnimation(canvas, mappings, animationSpeed, barInterval, nextFrom, nextTo, update);
+            switchAnimation(
+              canvas,
+              mappings,
+              animationSpeed,
+              barInterval,
+              nextFrom,
+              nextTo,
+              update,
+            );
           } else {
             update();
           }

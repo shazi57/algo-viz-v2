@@ -60,8 +60,8 @@ class NavBar extends React.Component {
 
   render() {
     const { drawer, algo, algoList } = this.state;
-    const {rendering} = this.props;
-    console.log(rendering);
+    const { rendering } = this.props;
+
     return (
       <div className="navBar">
         <img id="logo" alt="logoImage" src={logo} />
