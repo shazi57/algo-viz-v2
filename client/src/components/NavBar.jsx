@@ -60,19 +60,21 @@ class NavBar extends React.Component {
 
   render() {
     const { drawer, algo, algoList } = this.state;
+    const { rendering } = this.props;
+
     return (
       <div className="navBar">
         <img id="logo" alt="logoImage" src={logo} />
-        <Slider onSizeConfirmed={this.onSizeConfirmed} />
-        <NavButton onButtonClick={this.onButtonClick} label="Create" />
-        <NavButton onButtonClick={this.onButtonClick} label={algo} />
+        <Slider rendering={rendering} onSizeConfirmed={this.onSizeConfirmed} />
+        <NavButton rendering={rendering} onButtonClick={this.onButtonClick} label="Create" />
+        <NavButton rendering={rendering} onButtonClick={this.onButtonClick} label={algo} />
         <AlgoDrawer
           algoList={algoList}
           isOpen={drawer}
           isClosed={this.onDrawerClose}
           algoClicked={this.onDrawerClose}
         />
-        <NavButton onButtonClick={this.onButtonClick} label="Start" />
+        <NavButton rendering={rendering} onButtonClick={this.onButtonClick} label="Start" />
         <NavButton onButtonClick={this.onButtonClick} label="Clear" />
       </div>
     );

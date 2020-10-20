@@ -13,11 +13,11 @@ const theme = createMuiTheme({
 });
 
 const NavButton = (props) => {
-  const { label, onButtonClick } = props;
+  const { label, onButtonClick, rendering } = props;
   return (
     <div className="buttonContainer">
       <ThemeProvider theme={theme}>
-        <GreenButton onClick={onButtonClick} variant="outlined" color="primary">
+        <GreenButton disabled={rendering} onClick={onButtonClick} variant="outlined" color="primary">
           {label}
         </GreenButton>
       </ThemeProvider>
